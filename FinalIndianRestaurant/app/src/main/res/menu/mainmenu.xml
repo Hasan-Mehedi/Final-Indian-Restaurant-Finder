@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vivianaranha="http://schemas.android.com/apk/res-auto" >
+
+    <item android:id="@+id/search"
+        android:title="search"
+        android:orderInCategory="1"
+        vivianaranha:showAsAction="always"
+        android:icon="@drawable/search"/>
+
+    <item android:id="@+id/favorite"
+        android:title="My Favorites"
+        android:orderInCategory="2"
+        />
+    <item android:id="@+id/shareapp"
+        android:title="Share App"
+        android:orderInCategory="3"
+        />
+    <item android:id="@+id/about"
+        android:title="About"
+        android:orderInCategory="4"
+        />
+</menu>

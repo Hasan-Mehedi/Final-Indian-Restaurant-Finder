@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/nameFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#B0253C"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/addressFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#116117"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/mapFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:focusableInTouchMode="false"
+            android:src="@drawable/map" />
+
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:focusable="false"/>
+
+        <ImageButton
+            android:id="@+id/shareFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="false"
+            android:src="@drawable/share" />
+
+    </LinearLayout>
+
+</LinearLayout>
