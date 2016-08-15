@@ -10,33 +10,37 @@
         android:id="@+id/nameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#692D21"
+        android:layout_marginLeft="10dp"
         android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#692D21" />
 
     <TextView
         android:id="@+id/addressField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#1B691E"
+        android:layout_marginLeft="10dp"
         android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#1B691E" />
 
     <TextView
         android:id="@+id/averagecostField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#1E6918"
+        android:layout_marginLeft="10dp"
         android:text="Small Text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#1E6918" />
 
     <TextView
         android:id="@+id/ratingField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#251A69"
+        android:layout_marginLeft="10dp"
         android:text="Small Text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#251A69" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,20 +51,20 @@
         <ImageButton
             android:id="@+id/menuButton"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:focusableInTouchMode="false"
             android:src="@drawable/map" />
 
         <Space
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:focusable="false"/>
+            android:focusable="false" />
 
         <ImageButton
             android:id="@+id/favoriteButton"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:focusableInTouchMode="false"
             android:src="@drawable/favorite" />
 

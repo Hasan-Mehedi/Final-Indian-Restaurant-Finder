@@ -13,13 +13,13 @@ public class SQLDatabaseAdapter {
 
     SQLHelper helper;
 
-    public SQLDatabaseAdapter(Context context){
+    public SQLDatabaseAdapter(Context context) {
         helper = new SQLHelper(context);
     }
 
     public long insertData(Results result) {
 
-        if(getResultName(result.name)) return 0;
+        if (getResultName(result.name)) return 0;
 
 
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -37,24 +37,23 @@ public class SQLDatabaseAdapter {
         return id;
     }
 
-    public Boolean getResultName(String resultName){
+    public Boolean getResultName(String resultName) {
 
         SQLiteDatabase db = helper.getReadableDatabase();
 
         String[] columns = {SQLHelper.NAME};
 
-        Cursor cursor = db.query(SQLHelper.TABLE_NAME, columns, SQLHelper.NAME+" = '"+resultName+"'", null, null, null, null);
-        if(!cursor.moveToFirst() || cursor.getCount() == 0) return false;
+        Cursor cursor = db.query(SQLHelper.TABLE_NAME, columns, SQLHelper.NAME + " = '" + resultName + "'", null, null, null, null);
+        if (!cursor.moveToFirst() || cursor.getCount() == 0) return false;
         return true;
     }
 
     public Cursor fetchAllResults() {
         SQLiteDatabase db = helper.getReadableDatabase();
 
-        String[] columns = {SQLHelper.NAME, SQLHelper.ADDRESS,SQLHelper.LATTITUDE,SQLHelper.LONGITUDE,SQLHelper.USERRATING,SQLHelper.MENU, SQLHelper.RESTAURANTURL};
+        String[] columns = {SQLHelper.NAME, SQLHelper.ADDRESS, SQLHelper.LATTITUDE, SQLHelper.LONGITUDE, SQLHelper.USERRATING, SQLHelper.MENU, SQLHelper.RESTAURANTURL};
 
         Cursor cursor = db.query(SQLHelper.TABLE_NAME, columns, null, null, null, null, null);
-
 
 
 //        ArrayList<Results> result = new ArrayList<>();
@@ -86,8 +85,6 @@ public class SQLDatabaseAdapter {
     }
 
 
-
-
     static class SQLHelper extends SQLiteOpenHelper {
 
         private static final String DATABASE_NAME = "IndianRestaurantDatabase";
@@ -102,7 +99,7 @@ public class SQLDatabaseAdapter {
         private static final String RESTAURANTURL = "rUrl";
 
 
-        private static final String CREATE_TABLE = "CREATE TABLE "+ TABLE_NAME +" ("+ NAME +" VARCHAR(255), "+ ADDRESS +" VARCHAR(255), "+ LATTITUDE +" VARCHAR(255), "+ LONGITUDE +" VARCHAR(255), "+ USERRATING +" VARCHAR(255), "+ MENU +" VARCHAR(255), "+ RESTAURANTURL +" VARCHAR(255));";
+        private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + NAME + " VARCHAR(255), " + ADDRESS + " VARCHAR(255), " + LATTITUDE + " VARCHAR(255), " + LONGITUDE + " VARCHAR(255), " + USERRATING + " VARCHAR(255), " + MENU + " VARCHAR(255), " + RESTAURANTURL + " VARCHAR(255));";
         //private static final String DROP_TABLE = "DROP TABLE IF EXISTS "+TABLE_NAME;
         //private static final String ALTER_TABLE = "ALTER TABLE " + TABLE_NAME + " ADD COLUMN " + PHONE + " int DEFAULT 0";
 
@@ -122,7 +119,7 @@ public class SQLDatabaseAdapter {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 //            db.execSQL(ALTER_TABLE);
-            Toast.makeText(context, "onUpgrade Called",Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "onUpgrade Called", Toast.LENGTH_LONG).show();
 
         }
     }

@@ -2,6 +2,7 @@ package com.example.shaon.finalindianrestaurant;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,35 +62,40 @@ public class ResultsAdapter extends ArrayAdapter {
             holder = (ResultsViewHolder) row.getTag();
         }
 
-            final Results result = results.get(position);
-            holder.myName.setText(result.name);
-            holder.myAddress.setText(result.address);
-            holder.myaveragecost.setText("Average cost for a couple: " + result.average_cost_for_two);
-            holder.myRating.setText("Rating: " + result.aggregate_rating);
+        final Results result = results.get(position);
+        holder.myName.setText(result.name);
+        holder.myAddress.setText(result.address);
+        holder.myaveragecost.setText("Average cost for a couple: " + result.average_cost_for_two);
+        holder.myRating.setText("Rating: " + result.aggregate_rating);
 
-            holder.menubutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        if (position % 2 == 1) {
+            row.setBackgroundColor(Color.parseColor("#3385765F"));
+        } else {
+            row.setBackgroundColor(Color.parseColor("#33E0C7A1"));
+        }
 
-                    Intent intent = new Intent(parent.getContext(), MapViewRestaurant.class);
-                    intent.putExtra("latt", String.valueOf(result.latitude));
-                    intent.putExtra("lngg", String.valueOf(result.longitude));
-                    intent.putExtra("name",result.name);
-                    intent.putExtra("city",result.city);
-                    parent.getContext().startActivity(intent);
-                }
-            });
+        holder.menubutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            holder.favoriteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SQLDatabaseAdapter databaseAdapter = new SQLDatabaseAdapter(getContext());
-                    Log.d("INSERTING", result.name);
-                    Toast.makeText(getContext(), result.name + " added to favourites", Toast.LENGTH_LONG).show();
-                    databaseAdapter.insertData(result);
-                }
-            });
+                Intent intent = new Intent(parent.getContext(), MapViewRestaurant.class);
+                intent.putExtra("latt", String.valueOf(result.latitude));
+                intent.putExtra("lngg", String.valueOf(result.longitude));
+                intent.putExtra("name", result.name);
+                intent.putExtra("city", result.city);
+                parent.getContext().startActivity(intent);
+            }
+        });
 
+        holder.favoriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLDatabaseAdapter databaseAdapter = new SQLDatabaseAdapter(getContext());
+                Log.d("INSERTING", result.name);
+                Toast.makeText(getContext(), result.name + " added to favourites", Toast.LENGTH_LONG).show();
+                databaseAdapter.insertData(result);
+            }
+        });
 
 
         return row;

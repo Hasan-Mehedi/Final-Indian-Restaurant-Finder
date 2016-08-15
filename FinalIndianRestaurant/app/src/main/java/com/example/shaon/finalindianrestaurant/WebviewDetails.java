@@ -14,9 +14,9 @@ public class WebviewDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
-        webView= (WebView) findViewById(R.id.webView);
+        webView = (WebView) findViewById(R.id.webView);
         result = getIntent().getParcelableExtra("result");
-        String weburl=result.restauranturl;
+        String weburl = result.restauranturl;
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(weburl);
 

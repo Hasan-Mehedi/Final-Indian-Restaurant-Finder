@@ -12,7 +12,6 @@ public class MyContentProvider extends ContentProvider {
     public static final Uri CONTENT_URI = Uri.parse("content://com.shaon.restaurantfinderindian");
 
 
-
     public MyContentProvider() {
     }
 
@@ -41,7 +40,7 @@ public class MyContentProvider extends ContentProvider {
         Context context = getContext();
         dbAdapter = new SQLDatabaseAdapter(context);
 
-        return (dbAdapter == null)?false:true;
+        return (dbAdapter == null) ? false : true;
 
     }
 

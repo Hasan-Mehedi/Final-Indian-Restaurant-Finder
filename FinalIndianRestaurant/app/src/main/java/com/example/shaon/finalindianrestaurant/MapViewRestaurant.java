@@ -18,20 +18,21 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapViewRestaurant extends AppCompatActivity implements OnMapReadyCallback {
 
     GoogleMap mGoogleMap;
-    double lat,lng;
-    String name,city,latt,lngg;
+    double lat, lng;
+    String name, city, latt, lngg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_view_restaurant);
-        latt=getIntent().getStringExtra("latt");
-        lngg=getIntent().getStringExtra("lngg");
+        latt = getIntent().getStringExtra("latt");
+        lngg = getIntent().getStringExtra("lngg");
         lat = Double.parseDouble(latt);
         lng = Double.parseDouble(lngg);
-        name=getIntent().getStringExtra("name");
-        city=getIntent().getStringExtra("city");
+        name = getIntent().getStringExtra("name");
+        city = getIntent().getStringExtra("city");
 
-        if(googleServicesAvailable()){
+        if (googleServicesAvailable()) {
             initMap();
         }
     }
@@ -44,9 +45,9 @@ public class MapViewRestaurant extends AppCompatActivity implements OnMapReadyCa
     public boolean googleServicesAvailable() {
         GoogleApiAvailability api = GoogleApiAvailability.getInstance();
         int isAvailable = api.isGooglePlayServicesAvailable(this);
-        if(isAvailable == ConnectionResult.SUCCESS) {
+        if (isAvailable == ConnectionResult.SUCCESS) {
             return true;
-        } else if (api.isUserResolvableError(isAvailable)){
+        } else if (api.isUserResolvableError(isAvailable)) {
             Dialog dialog = api.getErrorDialog(this, isAvailable, 0);
             dialog.show();
         } else {

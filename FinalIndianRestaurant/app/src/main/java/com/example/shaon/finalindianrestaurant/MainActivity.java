@@ -1,9 +1,12 @@
 package com.example.shaon.finalindianrestaurant;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,6 +61,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mainmenu, menu);
+
+        // Get the SearchView and set the searchable configuration
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+        // Assumes current activity is the searchable activity
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -65,11 +76,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.search: {
-                Intent intent = new Intent(MainActivity.this, SearchEdittext.class);
-                startActivity(intent);
-                break;
-            }
+//            case R.id.search: {
+//                Intent intent = new Intent(MainActivity.this, SearchEdittext.class);
+//                startActivity(intent);
+//                break;
+//            }
             case R.id.favorite: {
                 Cursor result = getContentResolver().query(MyContentProvider.CONTENT_URI, null, null, null, null);
                 ArrayList<ResultsFavorite> databaseresults = new ArrayList<ResultsFavorite>();

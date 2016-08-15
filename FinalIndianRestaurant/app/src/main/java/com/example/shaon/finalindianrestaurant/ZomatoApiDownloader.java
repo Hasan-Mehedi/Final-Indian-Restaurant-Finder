@@ -22,14 +22,14 @@ public class ZomatoApiDownloader extends AsyncTask<String, Integer, ArrayList> {
     SearchResult activity2;
     int flag;
 
-    public ZomatoApiDownloader(MainActivity activity,int flag) {
+    public ZomatoApiDownloader(MainActivity activity, int flag) {
         this.activity = activity;
-        this.flag=flag;
+        this.flag = flag;
     }
 
-    public ZomatoApiDownloader(SearchResult activity2,int flag) {
+    public ZomatoApiDownloader(SearchResult activity2, int flag) {
         this.activity2 = activity2;
-        this.flag=flag;
+        this.flag = flag;
     }
 
     @Override
@@ -99,10 +99,9 @@ public class ZomatoApiDownloader extends AsyncTask<String, Integer, ArrayList> {
     @Override
     protected void onPostExecute(ArrayList arrayList) {
         super.onPostExecute(arrayList);
-        if(flag==1) {
+        if (flag == 1) {
             activity.drawListView(arrayList);
-        }
-        else
+        } else
             activity2.drawListView(arrayList);
     }
 }

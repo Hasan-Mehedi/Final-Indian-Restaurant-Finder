@@ -2,6 +2,7 @@ package com.example.shaon.finalindianrestaurant;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,17 +31,17 @@ public class FavoriteResultAdapter extends ArrayAdapter {
 
     }
 
-    class ResultsViewHolder{
+    class ResultsViewHolder {
         TextView myName;
         TextView myAddress;
-        ImageButton mapButton,shareButton;
+        ImageButton mapButton, shareButton;
 
 
-        ResultsViewHolder(View v){
+        ResultsViewHolder(View v) {
             myName = (TextView) v.findViewById(R.id.nameFavorite);
             myAddress = (TextView) v.findViewById(R.id.addressFavorite);
-            mapButton= (ImageButton) v.findViewById(R.id.mapFavorite);
-            shareButton= (ImageButton) v.findViewById(R.id.shareFavorite);
+            mapButton = (ImageButton) v.findViewById(R.id.mapFavorite);
+            shareButton = (ImageButton) v.findViewById(R.id.shareFavorite);
         }
     }
 
@@ -48,7 +49,8 @@ public class FavoriteResultAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, final ViewGroup parent) {
         View row = convertView;
         ResultsViewHolder holder = null;
-        if(row == null){
+
+        if (row == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.single_favorite, parent, false);
             holder = new ResultsViewHolder(row);
@@ -59,6 +61,12 @@ public class FavoriteResultAdapter extends ArrayAdapter {
         final ResultsFavorite result = results.get(position);
         holder.myName.setText(result.name);
         holder.myAddress.setText(result.address);
+        if (position % 2 == 1) {
+            row.setBackgroundColor(Color.parseColor("#26B6B546"));
+        } else {
+            row.setBackgroundColor(Color.WHITE);
+        }
+
 
         holder.mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,8 +75,8 @@ public class FavoriteResultAdapter extends ArrayAdapter {
                 Intent intent = new Intent(parent.getContext(), MapViewRestaurant.class);
                 intent.putExtra("latt", result.latitude);
                 intent.putExtra("lngg", result.longitude);
-                intent.putExtra("name",result.name);
-                intent.putExtra("city",result.address);
+                intent.putExtra("name", result.name);
+                intent.putExtra("city", result.address);
                 parent.getContext().startActivity(intent);
 
 
